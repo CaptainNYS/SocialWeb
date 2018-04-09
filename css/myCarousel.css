@@ -1,0 +1,13 @@
+*{
+    padding: 0;margin: 0;
+}
+
+
+#myCarousel{
+    width:800px;
+    height:300px;
+    position:relative;
+    left:300px;
+    margin-top: 80px;
+   
+}

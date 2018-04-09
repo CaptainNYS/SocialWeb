@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+}
+.container{
+    /*保证footer是相对于container位置绝对定位*/
+    position:relative;  
+    width:100%;
+    min-height:100%; 
+    /*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/  
+    padding-bottom: 100px;  
+    box-sizing: border-box;
+}
+
+.footer{
+    width: 100%;
+    position:absolute;
+    bottom:0px;
+    left:0px;
+
+    background-color: white;
+    color:rgb(59, 48, 48);
+    text-align: center;
+    font-size: 12px;
+    height: 25px; 
+   
+     font-family:tahoma,Arial;
+     line-height: 25px;
+}
+
+.footer span,.footer p,.footer a{
+
+    margin:0px;
+    padding:0px;
+    }
+.footer a,.footer a:hover{
+    color:rgb(59, 48, 48);
+}
+    
+
+    </style>
+
+  </head>
+
+
+  <body>
+      <!-- <header>HEADER</header>
+      <section class="main">MAIN</section > -->
+        <div class="footer">  
+                        
+                                
+          <a href="#" target="_blank">关于我们</a> 
+          <span class="pipe">|</span> 
+          <a href="#" target="_blank">联系我们</a> 
+          <span class="pipe">|</span> 
+          <a href="#" target="_blank">法律声明</a> <br>
+         <p>Copyright &copy;2018 XIDIAN UNIVERSITY Supreme 602 All Rights Reserved. 
+         </p>
+</div>
+  </body>
+</html>

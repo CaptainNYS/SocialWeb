@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bootstrap 附加导航（Affix）插件</title>
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+/* Custom Styles */
+
+    ul.nav-tabs{
+        width: 140px;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        
+    }
+    ul.nav-tabs.affix{
+    position: fixed;
+        left:0px;
+        top: 50px; 
+    }
+    ul.nav-tabs.affix-top{
+        left:0px;
+        position:fixed;
+        top:50px;
+    }
+    ul.nav-tabs li{
+        margin: 0;
+        border-top: 1px solid #ddd;
+        width: 140px;
+    }
+    ul.nav-tabs li:first-child{
+        border-top: none;
+    }
+    ul.nav-tabs li a{
+        margin: 0;
+        padding: 8px 16px;
+        border-radius: 0;
+    }
+    /* padding: 上右下左 */
+    ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+        color: #fff;
+        background: #0088cc;
+        border: 1px solid #0088cc;
+    }
+    ul.nav-tabs li:first-child a{/* 左上 右上 右下 左下 */
+        border-radius: 4px 4px 0 0;
+    }
+    ul.nav-tabs li:last-child a{
+        border-radius: 0 0 4px 4px;
+    }
+
+    /* ul.nav-tabs.affix-bottom{
+        position: relative;
+        bottom:200px;
+
+    } */
+
+    .col-xs-10{
+        position:absolute;;
+        left:220px;
+
+ 
+    }
+    .kuang{
+        height:450px;
+
+        width:800px;
+        position: relative;
+        left:50px;
+
+    }
+    .container{
+        /* background-color: cyan; */
+        height:1500px;
+    }
+
+
+</style>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+        <!-- <script type="text/javascript" src="js/header.js"></script> -->
+        <!-- 超大屏幕 -->
+<div class="container">
+   <!-- <div class="jumbotron">
+        
+    </div> -->
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                <li class="active"><a href="#section-1"><span class="glyphicon glyphicon-link"></span>&nbsp&nbsp话题热度趋势</a></li>
+                <li><a href="#section-2"><span class="glyphicon glyphicon-adjust"></span>&nbsp&nbsp信息占比</a></li>
+                <li><a href="#section-3"><span class="glyphicon glyphicon-stats"></span>&nbsp&nbsp柱状图</a></li>
+                <li><a href="biao.html"target="_blank"><span class="glyphicon glyphicon-list
+                    "></span>&nbsp&nbsp表</a></li>
+                <li><a href="index.html" ><span class="glyphicon glyphicon-home"></span>&nbsp&nbsp首页</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-10">
+            <a name="a"></a>
+            <div class="kuang" id="section-1">
+                    <script type="text/javascript" src="js/hot-daohang.js"></script>   
+            </div>
+        
+            <hr>
+            <a name="b"></a>
+            <div class="kuang" id="section-2">
+                <br><br>
+                    <script type="text/javascript" src="js/bili-daohang.js"></script>   
+            </div>
+            
+            <hr>
+            <a name="c"></a>
+            <div name="c" class="kuang" id="section-3">
+                    <br><br>
+                        <script type="text/javascript" src="js/zhutu-daohang.js"></script>   
+                </div>
+            <hr>
+
+           
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="js/footer1.js"></script>
+</body>
+</html>

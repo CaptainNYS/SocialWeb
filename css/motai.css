@@ -1,0 +1,31 @@
+
+ul button {
+    position:relative;
+    height:50px;
+    left:200px;
+    width:300px;
+    /* margin:0;
+    background-color: steelblue;
+    border-radius: 10px;
+    box-shadow: none; */
+}
+#hide1,#hide2,#hide3{
+    display: none;
+
+}
+#cha1,#cha3{
+    width:20px;
+    height:20px;   
+    position:relative;
+    left:900px;
+    padding:0;
+
+}
+#cha2{
+    
+    width:20px;
+    height:20px;    
+    position:relative;
+    left:950px;
+    padding:0;
+}

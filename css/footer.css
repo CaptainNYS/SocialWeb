@@ -1,0 +1,52 @@
+html,body{
+    margin: 0;
+    padding: 0;
+   height: 100%;
+    
+}
+
+/* .container {
+    position: relative;
+    margin: 0 auto;
+    height: auto;
+    height: 100%; 
+    min-height: 100%;
+    background-color:gray;
+   
+} */
+
+
+/* .content {
+    padding: 1em 1em 5em;
+    font-size: 30px;
+
+} */
+
+.footer {
+    position: absolute; /*相对于父元素contanier定位*/
+    width: 100%;
+    bottom: 0px;/*始终距离它的父元素的底部为0px.则是处于父元素的最底*/
+    left:0px;
+
+}
+
+.footer{
+    background-color: white;
+    color:rgb(59, 48, 48);
+    text-align: center;
+    font-size: 12px;
+    height: 50px; 
+   
+     /* border-top:1px solid #999; */
+     font-family:tahoma,Arial;
+     line-height: 25px;
+}
+
+.footer span,.footer p,.footer a{
+
+    margin:0px;
+    padding:0px;
+    }
+.footer a,.footer a:hover{
+    color:rgb(59, 48, 48);
+}

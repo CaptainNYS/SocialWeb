@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>热点指数</title>
+
+<script src="js/echarts.js"></script>
+
+</head>
+<body>
+        <script type="text/javascript" src="js/header.js"></script>    
+        <div class="container" style="height:800px;">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;position:absolute;left:400px;top:10px;"></div>
+    <script type="text/javascript">  
+    
+       // 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+
+// 绘制图表
+myChart.setOption({
+    
+    backgroundColor: '#2c343c',
+    textStyle: {
+        color: 'rgba(255, 255, 255, 0.3)'
+    },   
+     title: {
+        text: '热度信息占比',
+        left: 'center',
+        top: 20,
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            roseType: 'angle',  
+            data:[
+                {value:235, name:'凤凰'},
+                {value:274, name:'新华社'},
+                {value:310, name:'人民日报'},
+                {value:335, name:'微信'},
+                {value:400, name:'微博'}
+            ],
+            itemStyle: {
+            // 设置扇形的颜色
+            // color: '#c23531',
+            // 阴影的大小
+            shadowBlur: 200,
+            // 阴影水平方向上的偏移
+            shadowOffsetX: 0,
+            // 阴影垂直方向上的偏移
+            shadowOffsetY: 0,
+            // 阴影颜色
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+            emphasis: {
+            shadowBlur: 200,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            
+            },
+            labelLine: {
+            lineStyle: {
+                color: 'rgba(255, 255, 255, 0.3)'
+            }
+            },
+            
+            // label: {
+            // textStyle: {
+            //     color: 'rgba(25, 25, 255, 0.3)'
+            // }
+            // }
+            
+        }
+    ]
+})
+
+        </script>
+    <div class="jindu">
+            <input type="text" id="input" value="" placeholder="0" autocomplete="off">%
+            <div id="tiao">
+                <div id="yuan"></div>
+                <div id="jindu"></div>
+            </div>
+        </div>
+<style>
+    .jindu{
+        position:relative;
+        top:500px;
+        left:300px;
+        width:600px;
+
+    }
+    html,body{
+            height: 100%;
+        }
+        body{
+            margin: 0;
+        }
+        body>div{
+            padding-top: 60px;
+            margin-left: 60px;
+        }
+        #tiao{
+            display: inline-block;
+            width: 500px;
+            height: 4px;
+            background: rgb(226, 96, 96);
+            border-radius: 3px;
+            position: relative;
+            margin-left: 50px;
+        }
+        input{
+            border: 1px solid #1299e7;
+            width: 20px;
+            text-align: center;
+            vertical-align: top;
+        }
+        #yuan{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50% 50%;
+            background: #177ad8;
+            position: absolute;
+            margin-top: -4px;
+            cursor: pointer;
+            box-shadow: 0px 0px 3px #177ad8;
+        }
+        #jindu{
+            width: 0px;
+            height: 4px;
+            background-color: #177ad8;
+            border-radius: 3px;
+        }
+</style>
+<script>
+    var scale =function(input,yuan,jindu,tiao){
+        this.input =document.getElementById(input);
+        this.yuan =document.getElementById(yuan);
+        this.jindu=document.getElementById(jindu);
+        this.tiao=document.getElementById(tiao);
+        this.tiaoW =this.tiao.offsetWidth;
+        this.init()
+    }
+    scale.prototype ={
+        init: function(){
+            var isfalse =false, 
+                f = this,
+                m = Math,
+                b = document.body,
+                minValue =0,
+                maxValue =100;
+            
+            f.yuan.onmousedown =function(e){
+                isfalse =true;
+                var X =e.clientX;
+                var offleft =this.offsetLeft;
+                var max = f.tiao.offsetWidth - this.offsetWidth;
+
+                b.onmousemove =function(e){
+                    if (isfalse == false){
+                        return;
+                    }
+                    var changeX= e.clientX;
+                    var moveX =m.min(max,m.max(-2,offleft+(changeX-X)));
+                    f.input.value =m.round(m.max(0,moveX / max) * 100);
+                    f.yuan.style.marginLeft =m.max(0, moveX) +"px";
+                    f.jindu.style.width =moveX +"px";
+                }
+            }
+            b.onmouseup =function(){
+                isfalse =false;
+            }
+
+            f.input.onblur =function(){
+                var theV =this.value*1;
+                if(theV >maxValue || theV <minValue){
+                    alert("输入的数值不正确");
+                    f.input.value ="";
+                    f.yuan.style.marginLeft ="0px";
+                    f.jindu.style.width ="0px";
+                    return;
+                }
+                var xxx =theV/100*f.tiaoW;
+                f.yuan.style.marginLeft =xxx +"px";
+                f.jindu.style.width =xxx +"px";
+            }
+        }
+    }
+
+    new scale("input","yuan","jindu","tiao");
+</script>
+<style>
+    .fuxuan{
+        position:relative;
+top:600px;
+        left:300px;
+        width:600px;
+
+    }
+</style>
+        <div class="fuxuan">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 选项 1
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 2
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 3
+                </label>
+                                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox1" value="option1"> 选项 4
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 5
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 6
+                </label>
+                                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" value="option2"> 选项 7
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox3" value="option3"> 选项 8
+                </label>
+
+            </div>
+            <style>
+            .form-inline{
+
+                position:relative;
+                top:650px;
+                left:280px;
+
+                
+            }
+
+
+            </style>
+<form role="form" class="form-inline">
+        <div class="form-group ">
+
+          <input type="text" class="form-control" style="width:500px;text-align: left;" placeholder="文本输入">
+</div>
+<div class="form-group ">
+<button type="submit" class="btn btn-default" style="margin-left:50px; background:#0088cc; color:white;">提交</button>
+</div>
+            </div>
+
+       </form>
+        </div >
+
+        
+ <script type="text/javascript" src="js/footer1.js"></script>
+ 
+ 
+</body>
+
+</html>
